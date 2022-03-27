@@ -1,4 +1,12 @@
 import * as actionTypes from './actionTypes'
+
+import { combineReducers, createStore, applyMiddleware } from 'redux'
+
+import ReduxThunk from 'redux-thunk'
+
+
+
+
 import { dataobj } from '../data'
 const initialState={
       completeData:dataobj.data,
@@ -23,4 +31,8 @@ const fetchReducers=(state=initialState,action)=>{
     return state;
 }
 
-export default fetchReducers
+const rootReducers=combineReducers({
+    data:fetchReducers
+    })
+  
+export const store=createStore(rootReducers,applyMiddleware(ReduxThunk))
