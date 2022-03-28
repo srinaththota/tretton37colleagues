@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-
+import  ReactDOM  from 'react';
 import App from '../App';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
