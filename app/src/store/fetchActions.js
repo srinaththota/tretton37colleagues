@@ -11,13 +11,19 @@ export const fetchData=()=>{
             if (token) {
             headers["Authorization"] = `${token}`;
             }
-        fetch(url).then(res=>{
-            console.log(res.body)
+        fetch(url).then(res=> res.json()).then(data=>{
+
+            dispatch({
+                type:actionTypes.FETCH,
+                payload:data
+            }) 
+        }).catch(err=>{
+            dispatch({
+                type:actionTypes.ERROR,
+                payload:err.message
+            })  
         }); 
-        dispatch({
-            type:actionTypes.FETCH,
-            payload:'defg'
-        })
+       
     }
 }
 
